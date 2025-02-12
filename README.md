@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Project Repository
 
 This repository contains all the files and directories used in our data modeling project. Each component plays a specific role in the process from data preprocessing to model visualization.
