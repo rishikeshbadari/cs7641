@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midterm Checkpoint</title>
+</head>
+<style>
+    .metric {
+        margin-bottom: 10px;
+    }
+
+    .metric-value {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <h1>Midterm Checkpoint- Predictive Analysis for Olympic Wins</h1>
+    <section>
+        <u>
+            <h2>Introduction/Background</h2>
+        </u>
+        <p>
+            The Olympics, a pinnacle of athletic competition, attract global talent across various sports. Predictive
+            modeling, born from academic and analytical intrigue, aims to forecast outcomes like medal distributions.
+        </p>
+    </section>
+    <section>
+        <h3>Literature Review</h3>
+        <ul>
+            <li>Machine learning techniques examine socio-economic factors' influence on Olympic success [1].</li>
+            <li>Heuristic methods employ machine learning to predict medal counts based on historical data, athlete
+                demographics, and pre-Games expectations [2].</li>
+            <li>A study focuses on India, analyzing factors impacting its Olympic performance [3].</li>
+        </ul>
+        <p>Dataset: Sourced from Kaggle, it contains diverse Olympic data, facilitating the development of predictive
+            models for understanding and forecasting medal wins.</p>
+        <a href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results">Kaggle
+            Dataset</a>
+    </section>
+    <section>
+        <u>
+            <h2>Problem Definition</h2>
+        </u>
+        <p>
+            Predicting medal likelihood in Olympic sports is challenging due to various factors like age, gender,
+            physical attributes, and historical context. Crucial for optimizing athlete performance, strategic planning,
+            and enhancing spectator experience.
+        </p>
+    </section>
+    <section>
+        <h3>Motivations</h3>
+        <ul>
+            <li>Performance Optimization: Identifying key performance factors for improved training efficiency and
+                competition outcomes.</li>
+            <li>Resource Allocation: Informed decisions on resource distribution, prioritizing athletes with higher
+                medal prospects.</li>
+            <li>Enhancing Spectator Experience: Providing fans with insights on likely medal winners to increase
+                engagement and interest.</li>
+        </ul>
+    </section>
+    <section>
+        <u>
+            <h2>Methods</h2>
+        </u>
+        <h3>Data Preprocessing Methods Implemented</h3>
+        <ul>
+            <li><strong>Data Preparation</strong>
+                <p>Converted all the text labels to integers to be able to use all the ML models and statistics. Saved
+                    the correspondences to make the analysis more understandable.</p>
+            <li><strong>Dataset Extension:</strong>
+                <p>Enhanced the dataset by aggregating data from the latest Olympic Games, specifically from Tokyo 2020
+                    and Beijing 2022. Overcame the obstacle of the original source's inaccessibility by utilizing a new
+                    website that offers up-to-date and extensive athlete data.</p>
+            </li>
+            <li><strong>Data Collection and Integration:</strong>
+                <p>Devised a script to systematically collect new data in batches of 10,000 entries to manage the
+                    time-intensive process, given the website's limitations. Efforts resulted in the creation of a new
+                    dataset containing 302,078 entries before cleaning (271,116 entries in the Kaggle dataset).</p>
+            </li>
+            <li><strong>Handling Missing Data:</strong>
+                <p>Evaluated the impact of missing values on the dataset and concluded that their exclusion would not
+                    significantly affect the dataset's size. Implemented a script that allows for the removal of rows
+                    with missing data, ensuring a clean and complete dataset for analysis.</p>
+            </li>
+            <li><strong>Data Cleaning:</strong>
+                <p>Cleansed the dataset of partial entries to preserve data integrity. This process involved rectifying
+                    missing, incomplete, or inconsistent entries, which refined the Kaggle dataset from 271,116 to
+                    206,165 usable records, and our new dataset from 302,078 to 226,514.</p>
+            </li>
+            <li><strong>Batch Processing for Data Merging:</strong>
+                <p>Successfully merged separate batches of newly collected data into a single, consolidated dataset,
+                    preparing it for the next stages of machine learning model training.</p>
+            </li>
+        </ul>
+        <p>Plan to introduce additional preprocessing techniques such as scaling of numerical features to normalize data
+            distributions and further feature encoding to transform categorical variables into a format that can be
+            provided to machine learning algorithms.</p>
+        <h3>ML Algorithms/Models Implemented</h3>
+        <p>These are the ML algorithms we implemented for this midterm checkpoint.</p>
+        <ul>
+            <li><strong>Random Forest Classifier:</strong>
+                <p>Selected for its ability to manage the complexity of Olympic medal prediction, effectively handling
+                    numerous features and their interactions without the risk of overfitting. Can identify most
+                    predictive factors for olympic success due to its ability to rank based on feature importance. It
+                    does not have major preprocessing requirements, making it optimal for the diverse and unscaled
+                    nature of olympic data. </p>
+            </li>
+            <li><strong>Logistic Regression:</strong>
+                <p>Simple and fast to train, making it a good baseline model for the binary classification problem. It
+                    can provide insights into the importance and type of relationships between features and the
+                    probability of winning a medal (e.g., positive or negative influences).</p>
+            </li>
+
+        </ul>
+    </section>
+    <section>
+        <u>
+            <h2>Results and Discussion</h2>
+        </u>
+        <u>
+            <h3>Visualizations</h3>
+        </u>
+
+        <ul>
+            <li> Here is a link to our <a href="ML_Visualizations.html">visualizations</a></li>
+        </ul>
+
+        <u>
+            <h3>Analysis of Quantative Metrics</h3>
+        </u>
+
+        <h4>RandomForestClassifier: </h4>
+        <ul>
+            <div class="metric">
+                <li><span class="metric-value">Accuracy (0.857):</span> This high accuracy rate suggests that the model
+                    is
+                    correctly predicting whether an athlete wins a medal approximately 85.7% of the time, which
+                    indicates a
+                    strong predictive power.</li>
+            </div>
+            <div class="metric">
+                <li><span class="metric-value">Precision (0.782):</span> A precision rate of 78.2% means that when the
+                    model
+                    predicts an athlete will win a medal, it is correct about 78.2% of the time. This is a strong
+                    performance, though there is room for improvement in reducing false positives.</li>
+            </div>
+            <div class="metric">
+                <li><span class="metric-value">Recall (0.857):</span> This indicates that the model successfully
+                    identifies
+                    85.7% of all actual medal winners correctly, highlighting its effectiveness in capturing true
+                    positives.
+                </li>
+            </div>
+            <div class="metric">
+                <li><span class="metric-value">F1-Score (0.791):</span> A balanced measure of precision and recall, this
+                    score confirms the model's strong performance in both aspects.</li>
+            </div>
+        </ul>
+        <h4>LogisticRegression:</h4>
+
+        <ul>
+            <div class="metric">
+                <li><span class="metric-value">Accuracy (0.853): </span> Very similar to the RandomForestClassifier,
+                    with an 85.3% accuracy rate, the LogisticRegression model also demonstrates a high level of
+                    predictive accuracy.
+                </li>
+            </div>
+            <div class="metric">
+                <li><span class="metric-value">Precision (0.727):</span> Although slightly lower than
+                    RandomForestClassifier, a precision rate of 72.7% is still respectable, indicating a good rate of
+                    correct predictions among positive classifications.
+                </li>
+            </div>
+            <div class="metric">
+                <li><span class="metric-value">Recall (0.853):</span> Matching closely with its accuracy, the recall
+                    rate suggests that the model is also effective in identifying true positives among the dataset.
+                </li>
+            </div>
+            <div class="metric">
+                <li><span class="metric-value">F1-Score (0.785):</span> This score is slightly lower than that of the
+                    RandomForestClassifier but still indicates a strong balance between precision and recall.
+                </li>
+            </div>
+        </ul>
+
+        <u>
+            <h3>Analysis of 1+ Algorithm/Model: </h3>
+        </u>
+
+        <h4>RandomForestClassifier: </h4>
+        <ul>
+            <li>A RandomForest is a supervised learning method that constructs multiple decision trees during training
+                and outputs the class that is the mode of the classes of the individual trees.
+            </li>
+            <li>It introduces randomness by selecting random samples of the dataset to build trees and random subsets of
+                features to determine splits, which increases diversity among the trees and leads to a more robust
+                overall model.
+            </li>
+            <li>Decision trees within the forest split nodes based on feature values that lead to the most significant
+                class separation.
+            </li>
+        </ul>
+
+        <h4>Logistic Regression:
+        </h4>
+        <ul>
+            <li>Logistic regression is a supervised learning model that uses a logistic function to model a binary
+                dependent variable, but it can be extended to multiclass classification.
+            </li>
+            <li>It estimates probabilities using a logistic function, which is particularly useful when there is a
+                linear decision boundary between the classes.
+            </li>
+            <li>The coefficients of the logistic regression model are trained to predict the log odds of the dependent
+                variable, and it assumes linear relationships between the independent variables and the log odds of the
+                dependent variable.
+            </li>
+
+        </ul>
+
+        <h4>Comparative Analysis and Recommendations
+        </h4>
+        <p>Both models have shown commendable predictive performances on the dataset, with the RandomForestClassifier
+            having a slight edge over the LogisticRegression in terms of precision and F1-score. The high accuracy and
+            recall rates of both models suggest they are well-suited for predicting medal winners among Olympic athletes
+            based on the features provided.
+        </p>
+
+        <h4>Why Did Your Models Perform Well?
+        </h4>
+        <ul>
+            <li><b>Relevant Features:</b> The features used (Age, Height, Weight, Sport) seem to be strongly indicative
+                of Olympic success, allowing both models to make accurate predictions.
+            </li>
+            <li><b>Appropriate Model Choice:</b>Both RandomForest and Logistic Regression are robust classifiers that
+                can handle the variability and complexity in the dataset effectively.
+            </li>
+        </ul>
+        <u>
+            <h3>Next Steps:</h3>
+        </u>
+        <ol>
+            <li><b>Feature Engineering:</b> Consider creating new features or transforming existing ones to improve
+                model
+                performance further. For instance, combining Age, Height, and Weight into a composite physical condition
+                index might yield better predictive power.
+            </li>
+            <li><b>Hyperparameter Tuning: </b>Experiment with tuning the models' hyperparameters (e.g., n_estimators,
+                max_depth for RandomForest; regularization strength C for LogisticRegression) to optimize performance.
+            </li>
+            <li><b>Cross-validation: </b>Use cross-validation techniques to assess the models' generalizability and
+                ensure they perform well across different subsets of the data.
+            </li>
+            <li><b>Ensemble Methods:</b> Consider using ensemble methods to combine predictions from multiple models,
+                potentially improving accuracy and reducing the likelihood of overfitting. </li>
+        </ol>
+
+
+
+
+
+
+
+    </section>
+
+    <section>
+        <u>
+            <h2>References:</h2>
+        </u>
+        <ul>
+            <li>
+                [1] C. Schlembach, S. L. Schmidt, D. Schreyer, and L. Wunderlich, “Forecasting the Olympic medal
+                distribution – A socioeconomic machine learning model,” Technological Forecasting and Social Change, p.
+                121314, Nov. 2021, doi: <a
+                    href="https://doi.org/10.1016/j.techfore.2021.121314">https://doi.org/10.1016/j.techfore.2021.121314</a>.
+            </li>
+            <li>
+                [2] C. Thirumalai, S. Monica and A. Vijayalakshmi, "Heuristics prediction of Olympic medals using
+                machine learning," 2017 International conference of Electronics, Communication and Aerospace Technology
+                (ICECA), Coimbatore, India, 2017, pp. 594-597, doi: <a
+                    href="https://doi.org/10.1109/ICECA.2017.8212734">10.1109/ICECA.2017.8212734</a>.
+            </li>
+            <li>
+                [3] V. Shailaja, “Predictive Analytics of Performance of India in the Olympics using Machine Learning
+                Algorithms,” International Journal of Emerging Trends in Engineering Research, vol. 8, no. 5, pp.
+                1829–1833, May 2020, doi: <a
+                    href="https://doi.org/10.30534/ijeter/2020/57852020">https://doi.org/10.30534/ijeter/2020/57852020</a>.
+            </li>
+        </ul>
+
+    </section>
+
+
+    <section>
+        <u>
+            <h2>GANTT CHART</h2>
+        </u>
+        <p>Below are the GANTT charts depicting the project timeline:</p>
+        <img src="gantt1.png" alt="GANTT Chart 1"
+            style="width:100%;max-width:600px; display: block; margin-bottom: 20px;">
+        <img src="gantt2.png" alt="GANTT Chart 2" style="width:100%;max-width:600px; display: block;">
+    </section>
+    <section>
+        <u>
+            <h2>Contributions Table</h2>
+        </u>
+        <table border="1" style="width:100%; border-collapse: collapse;">
+            <tr>
+                <th>Name</th>
+                <th>Proposal Contributions</th>
+            </tr>
+            <tr>
+                <td>Rishikesh Badari</td>
+                <td>Visualizations, Preprocessing, Model Implementation, Results & Discussions</td>
+            </tr>
+            <tr>
+                <td>Pierre Barroso</td>
+                <td>Data Preprocessing, Model Implementations, Results & Discussions</td>
+            </tr>
+            <tr>
+                <td>Anoop Jalla</td>
+                <td>Results and Discussion, Visualizations, Github Pages</td>
+            </tr>
+            <tr>
+                <td>Sanjit Pingili</td>
+                <td>Visualizations, Preprocessing, Results & Discussions</td>
+            </tr>
+            <tr>
+                <td>Prasad Shetye</td>
+                <td>Model Implementations, Visualizations, Results & Discussion</td>
+            </tr>
+        </table>
+    </section>
+
+</body>
+
+</html>
